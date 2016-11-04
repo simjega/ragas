@@ -40,7 +40,7 @@ for raag_name, raag_repr in raag_file_json.iteritems():
 
     except AssertionError:
         aroha_fail_count += 1
-        print "ordering failed for aroha of {0}: {1}".format(raag_name, print_problems(ascending, 1))
+        print "ordering failed for aroha of {0}: {1}".format(raag_name, ascending)
 
     avroha = None
     try:
@@ -48,7 +48,7 @@ for raag_name, raag_repr in raag_file_json.iteritems():
 
     except AssertionError:
         avroha_fail_count += 1
-        print "ordering failed for avroha of {0}: {1}".format(raag_name, print_problems(descending, -1))
+        print "ordering failed for avroha of {0}: {1}".format(raag_name, descending)
 
     if aroha is None and avroha is None:
         both_fail_count += 1
@@ -57,7 +57,7 @@ for raag_name, raag_repr in raag_file_json.iteritems():
         # print "succeeded"
         pass
         r = raga.Raga(aroha, avroha)
-        print "{}: \n{}".format(raag_name, r)
+        # print "{}: \n{}".format(raag_name, r)
         known_raags.append(r)
     else:
         # print "failed"
