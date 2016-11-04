@@ -11,4 +11,4 @@ class Raga(object):
         self.avroha = avroha
 
     def __repr__(self):
-        return "> " + self.aroha.__repr__() + "\n" + "< " + self.avroha.__repr__() + "\n"
+        return "^ " + self.aroha.__repr__() + "\n" + "v " + self.avroha.__repr__() + "\n"

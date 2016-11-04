@@ -28,6 +28,10 @@ def convert_name_to_note(name):
     return note.Note(config.NAME_TO_NUMBER[letter], octave=octave)
 
 
+def convert_name_to_metric(name):
+    return note_metric(convert_name_to_note(name))
+
+
 def convert_note_to_name(nte):
     letter = config.NUMBER_TO_NAME[nte.sulfege]
     octave = nte.octave
@@ -35,9 +39,17 @@ def convert_note_to_name(nte):
     return letter + octave * "'" if octave > 0 else -octave * "'" + letter
 
 
-def aroha(notes):
+def scale_up(notes):
     return NoteList(notes, lambda notes: sorted(notes, key=note_metric) == notes)
 
 
-def avroha(notes):
+def aroha(notes):
+    return NoteList(notes, lambda notes: note_metric(notes[-1]) == config.TOTAL_NOTES_IN_OCTAVE)
+
+
+def scale_down(notes):
     return NoteList(notes, lambda notes: sorted(notes, key=note_metric, reverse=True) == notes)
+
+
+def avroha(notes):
+    return NoteList(notes, lambda notes: note_metric(notes[-1]) == 0)

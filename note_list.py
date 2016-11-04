@@ -5,4 +5,4 @@ class NoteList(object):
         self.notes = notes
 
     def __repr__(self):
-        return self.notes.__repr__()
+        return " ".join([note.__repr__() for note in self.notes])
